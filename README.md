@@ -3,18 +3,18 @@
 You need to have Python interpreter on your Raspberry and following libraries:
 
 Adafruit_DHT, RPi.GPIO (or any other for the sensors)
-datetime
-email.mime.multipart
-email.mime.text
-h5py
-json
-math
-os
-requests
-shutil
-smtplib
-socket
-time
+<br>datetime
+<br>email.mime.multipart
+<br>email.mime.text
+<br>h5py
+<br>json
+<br>math
+<br>os
+<br>requests
+<br>shutil
+<br>smtplib
+<br>socket
+<br>time
 
 1. Copy all files to a directory on your Raspberry Pi 3
 2. Create your own configuration file (config10.36.5.157.json is an example)
