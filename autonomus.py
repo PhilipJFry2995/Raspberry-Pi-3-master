@@ -1,8 +1,11 @@
 import domain.file_check as file_manager
 import hardware.read_sensor as sensor_reader
-from datetime import datetime, timedelta
 import time
 import h5py
+import log
+from datetime import datetime, timedelta
+
+logger = log.get_logger()
 
 
 def inner_json(sensor, f, configuration):
@@ -13,7 +16,7 @@ def inner_json(sensor, f, configuration):
 
             # TODO processing data locally
 
-            print sensor['url'] + ' ' + str(value)
+            logger.info(sensor['url'] + ' ' + str(value))
             # Getting actual time
             today = datetime.strftime(datetime.now() + timedelta(hours=3), "%Y-%m-%d %H:%M:%S.")
             # Writing data to file
@@ -37,17 +40,17 @@ def autonomus_mode(configuration):
         f.close()
     except IOError:
         mode_changed = '0'
-        print 'IOError: Trouble reading mode file'
+        logger.error('IOError: Trouble reading mode file')
 
     # Working mode has been changed, return to main programm
     if mode_changed != '0':
-        print 'Mode changed'
+        logger.warning('Mode changed')
         try:
             f = open('mode', 'w')
             f.write('0')
             f.close()
         except IOError:
-            print 'IOError: Trouble writing to mode file'
+            logger.error('IOError: Trouble writing to mode file')
         finally:
             return
 

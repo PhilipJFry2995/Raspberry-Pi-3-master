@@ -1,5 +1,6 @@
 import json
 import network.check_connection as connection
+import log
 from auto import auto_mode
 from autonomus import autonomus_mode
 from semiauto import semiauto_mode
@@ -7,6 +8,9 @@ from semiauto import semiauto_mode
 # json_path = '/home/pi/project/config10.36.5.157.json'
 json_path = '/home/pi/project/config_backup.json'
 url = 'http://46.101.114.237/static/polls/file.php'
+
+logger = log.get_logger()
+logger.info('Application started')
 
 while True:
 
@@ -17,29 +21,31 @@ while True:
     if configuration['Mode'] != 'autonomus':
         server_connection = connection.is_connected("46.101.114.237", 8000)
         internet_connection = connection.is_connected("www.google.com", 80)
-        print 'Server connection: ' + str(server_connection)
-        print 'Internet connection: ' + str(internet_connection)
+        logger.info('Server connection: ' + str(server_connection))
+        logger.info('Internet connection: ' + str(internet_connection))
     else:
         server_connection = False
         internet_connection = False
 
     if configuration['Mode'] == 'auto':
         if server_connection:
-            print 'auto'
+            logger.info('mode:auto')
             auto_mode(configuration, url)
         elif internet_connection:
-            print 'semi'
+            logger.info('mode:semi')
             semiauto_mode(configuration, url)
         else:
-            print 'autonomus'
+            logger.info('mode:autonomus')
             autonomus_mode(configuration)
     elif configuration['Mode'] == 'semiauto':
         if internet_connection:
-            print 'semi'
+            logger.info('mode:semi')
             semiauto_mode(configuration, url)
         else:
-            print 'autonomus'
+            logger.info('mode:autonomus')
             autonomus_mode(configuration)
     else:
-        print 'autonomus'
+        logger.info('mode:autonomus')
         autonomus_mode(configuration)
+
+logger.info('Application finished')

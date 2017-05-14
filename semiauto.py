@@ -6,12 +6,15 @@ import network.check_connection as connection
 import time
 import h5py
 import requests
+import log
 from datetime import datetime, timedelta
 
 sensor_num = 0
 notify_max = []
 notify_min = []
 i = 0
+
+logger = log.get_logger()
 
 
 def inner_json(sensor, f, configuration):
@@ -26,7 +29,7 @@ def inner_json(sensor, f, configuration):
 
             # TODO processing data locally
 
-            print sensor['url'] + ' ' + str(value)
+            logger.info(sensor['url'] + ' ' + str(value))
             # Getting actual time
             today = datetime.strftime(datetime.now() + timedelta(hours=3), "%Y-%m-%d %H:%M:%S.")
             # Writing data to file
@@ -105,17 +108,17 @@ def semiauto_mode(configuration, url):
             f.close()
         except IOError:
             mode_changed = '0'
-            print 'IOError: Trouble reading mode file'
+            logger.error('IOError: Trouble reading mode file')
 
         # Working mode has been changed, return to main program
         if mode_changed != '0':
-            print 'Mode changed'
+            logger.warning('Mode changed')
             try:
                 f = open('mode', 'w')
                 f.write('0')
                 f.close()
             except IOError:
-                print 'IOError: Trouble writing to mode file'
+                logger.error('IOError: Trouble writing to mode file')
             finally:
                 return
 
@@ -142,6 +145,6 @@ def semiauto_mode(configuration, url):
                 requests.post(url, files=files)
                 notification_sender.send_notification('updateHDF', '46.101.114.237', 9091, 0)
             except requests.ConnectionError:
-                print 'Cannot connect to server'
-                print 'File not sent'
+                logger.error('Cannot connect to server')
+                logger.error('File not sent')
                 break

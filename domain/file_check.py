@@ -1,4 +1,11 @@
 import h5py
+import sys
+
+sys.path.append('/home/pi/project')
+
+import log
+
+logger = log.get_logger()
 
 
 def inner_json(sensor, ip_group):
@@ -20,12 +27,12 @@ def get_file(configuration):
     try:
         f = h5py.File("domain/data.hdf5", "r")
     except IOError:
-        print 'Creating new file'
+        logger.info('Creating new file')
         f = h5py.File("data.hdf5", "a")
         ip_group = f.create_group(configuration['IP'])
         for submenu in configuration['menu']:
             inner_json(submenu, ip_group)
     else:
-        print 'File is ready'
+        logger.info('File is ready')
     f.close()
     return h5py.File("domain/data.hdf5", "a")
