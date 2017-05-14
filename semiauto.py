@@ -31,7 +31,8 @@ def inner_json(sensor, f, configuration):
         #Writing data to file
         dataset = f.get(sensor['url']) #Getting dataset
         dataset.resize((dataset.len()+1,))
-        dataset[dataset.len() - 1] = [(today, value, True)] #Adding new value; True - sensor is active
+        #dataset[dataset.len() - 1] = [(today, value, True)] #Adding new value; True - sensor is active
+        dataset[dataset.len() - 1] = [(today, value)] #Adding new value; True - sensor is active
         
         #Checking critical parameters and sending notification
         if sensor['Critical'] == 'true':
@@ -42,6 +43,7 @@ def inner_json(sensor, f, configuration):
               write_letter(text, configuration['Email'], sensor['url'])
               notify_max[i] = False
           else:
+            #turn_off()
             notify_max[i] = True
           
           if value < int(sensor['MinNorma']):

@@ -18,7 +18,8 @@ def inner_json(sensor, f, configuration):
         #Writing data to file
         dataset = f.get(sensor['url']) #Getting dataset
         dataset.resize((dataset.len()+1,))
-        dataset[dataset.len() - 1] = [(today, value, True)] #Adding new value; True - sensor is active
+        #dataset[dataset.len() - 1] = [(today, value, True)] #Adding new value; True - sensor is active
+        dataset[dataset.len() - 1] = [(today, value)] #Adding new value; True - sensor is active
         
     else:
         for x in sensor['submenu']:

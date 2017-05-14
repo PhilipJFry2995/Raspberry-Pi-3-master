@@ -5,8 +5,10 @@ def inner_json(sensor, ip_group):
     if 'submenu' not in sensor:
         url = str(sensor['url'])
         ip_group.create_dataset(url[12:len(url)], (1,), maxshape=(None,), dtype=[('time', '|S27'),
-                                                                                       (str(sensor['namesen']), 'f'),
-                                                                                       ('active', 'b') ])
+                                                                                      (str(sensor['namesen']), 'f') ])
+        #ip_group.create_dataset(url[12:len(url)], (1,), maxshape=(None,), dtype=[('time', '|S27'),
+        #                                                                              (str(sensor['namesen']), 'f'),
+        #                                                                               ('active', 'b') ])
     else:
         for x in sensor['submenu']:
             inner_json(x, ip_group)

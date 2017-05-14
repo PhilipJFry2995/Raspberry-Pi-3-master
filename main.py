@@ -5,7 +5,8 @@ from semiauto import semiauto_mode
 from check_connection import is_connected
 import requests
 
-json_path = '/home/pi/project/config10.36.5.157.json'
+#json_path = '/home/pi/project/config10.36.5.157.json'
+json_path = '/home/pi/project/config_backup.json'
 url = 'http://46.101.114.237/static/polls/file.php'
 
 while True:

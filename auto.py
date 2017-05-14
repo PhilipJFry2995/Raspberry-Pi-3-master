@@ -17,7 +17,8 @@ def inner_json(sensor, f, configuration):
         #Writing data to file
         dataset = f.get(sensor['url']) #Getting dataset
         dataset.resize((dataset.len()+1,))
-        dataset[dataset.len() - 1] = [(today, value, True)] #Adding new value; True - sensor is active
+        #dataset[dataset.len() - 1] = [(today, value, True)] #Adding new value; True - sensor is active
+        dataset[dataset.len() - 1] = [(today, value)] #Adding new value;
         
     else:
         for x in sensor['submenu']:
@@ -60,13 +61,13 @@ def auto_mode(configuration, url):
     
     f.close()
     #Sending file every 5 minutes (300)
-    time.sleep(1);
+    time.sleep(60);
     if counter == 5:
       counter = 0;
       try:
         files = {'userfile': open('data.hdf5', 'rb')}
         requests.post(url, files=files)
-        send_notification('updateHDF', '46.101.114.237', 9091, 0)
+        #send_notification('updateHDF', '46.101.114.237', 9091, 0)
         print 'File sent'
       except requests.ConnectionError:
         print 'Cannot connect to server'

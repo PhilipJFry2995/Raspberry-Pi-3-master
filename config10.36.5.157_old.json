@@ -1,0 +1,116 @@
+{
+  "server": {
+	"switch IP": "10.36.5.1",
+	"IP": "10.36.5.157",
+	"status": "main",
+  "email": "proteus11@ukr.net",
+	"metadata": 
+	{
+	 "Module type": "Raspberry Pi 3 Model B V1.2",
+	 "Name": "Raspberry",
+	 "Location": "Schevchenko 1F",
+	 "Installation date": "5/05/2016"
+	}
+  },
+  "client": {
+    "name": "myLaptop"
+  },
+  "sensors": [
+    {
+	  "name": "temperature",
+    "url": "hydrothermometr/temperature",
+    "active": true,
+	  "max": 35,
+	  "min": 20,
+	  "pin": "23",
+	  "metadata": 
+      {
+       "Sensor ID": "Temp1-Raspberry",
+       "Sensor Type": "Hygro Thermometer DHT11",
+       "time": "Date and time of the measurement",
+       "temperature": "Temperature of this location in Celsius",
+       "active": "Status of this sensor"
+      }
+	},
+	{
+	  "name": "humidity",
+    "url": "hydrothermometr/humidity",
+    "active": true,
+	  "max": 80,
+	  "min": 30,
+	  "pin": "23",
+	  "metadata": 
+      {
+       "Sensor ID": "Hum1-Raspberry",
+       "Sensor Type": "Hygro Thermometer DHT11",
+       "time": "Date and time of the measurement",
+       "humidity": "Humidity of air in this location in percentages",
+       "active": "Status of this sensor"
+      }
+	},
+ {
+	  "name": "temperature",
+    "url": "hydrothermometr/temperature",
+    "active": true,
+	  "max": 35,
+	  "min": 20,
+	  "pin": "25",
+	  "metadata": 
+      {
+       "Sensor ID": "Temp2-Raspberry",
+       "Sensor Type": "Hygro Thermometer DHT11",
+       "time": "Date and time of the measurement",
+       "temperature": "Temperature of this location in Celsius",
+       "active": "Status of this sensor"
+      }
+	},
+	{
+	  "name": "humidity",
+    "url": "hydrothermometr/humidity",
+    "active": true,
+	  "max": 80,
+	  "min": 30,
+	  "pin": "25",
+	  "metadata": 
+      {
+       "Sensor ID": "Hum2-Raspberry",
+       "Sensor Type": "Hygro Thermometer DHT11",
+       "time": "Date and time of the measurement",
+       "humidity": "Humidity of air in this location in percentages",
+       "active": "Status of this sensor"
+      }
+	},
+   {
+	  "name": "illumination",
+    "url": "illumination",
+    "active": true,
+	  "max": 25000,
+	  "min": 10,
+	  "pin": "24",
+	  "metadata": 
+      {
+       "Sensor ID": "Light1-Raspberry",
+       "Sensor Type": "Photocell PDV-P8103",
+       "time": "Date and time of the measurement",
+       "illumination": "Level of illumination",
+       "active": "Status of this sensor"
+      }
+	},
+  {
+	  "name": "illumination",
+    "url": "illumination",
+    "active": true,
+	  "max": 25000,
+	  "min": 100,
+	  "pin": "18",
+	  "metadata": 
+      {
+       "Sensor ID": "Light2-Raspberry",
+       "Sensor Type": "Photocell PDV-P8103",
+       "time": "Date and time of the measurement",
+       "illumination": "Level of illumination",
+       "active": "Status of this sensor"
+      }
+	}
+  ]  
+}
