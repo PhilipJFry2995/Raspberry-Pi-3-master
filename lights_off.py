@@ -1,11 +1,11 @@
 import RPi.GPIO as GPIO
 
-#LED   PIN 14
-#LENTA PIN  4
-#FAN   PIN 21
+# LED   PIN 14
+# LENTA PIN  4
+# FAN   PIN 21
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
-#light()
+# light()
 GPIO.setup(4, GPIO.OUT)
 GPIO.output(4, GPIO.LOW)
 GPIO.setup(14, GPIO.OUT)

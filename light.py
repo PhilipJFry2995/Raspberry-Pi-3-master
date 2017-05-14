@@ -8,9 +8,7 @@ LIGHT_SENSOR_2 = 24
 light1 = LightSensor(LIGHT_SENSOR_1)
 light2 = LightSensor(LIGHT_SENSOR_2)
 
-while(True):
-  print light1.value
-  print light2.value
-  time.sleep(1)
-
-
+while True:
+    print light1.value
+    print light2.value
+    time.sleep(1)

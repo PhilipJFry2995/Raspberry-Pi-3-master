@@ -7,10 +7,10 @@ conn, addr = sock.accept()
 
 print 'connected:', addr
 
-#f = open('test.json', 'w')
+# f = open('test.json', 'w')
 while True:
     data = conn.recv(1024)
-    f.write(data);
+    f.write(data)
     if not data:
         conn.send('file recieved')
         break
