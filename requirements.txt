@@ -1,0 +1,14 @@
+Adafruit_DHT
+RPi.GPIO 
+datetime 
+email.mime.multipart 
+email.mime.text 
+h5py 
+json 
+math 
+os 
+requests 
+shutil 
+smtplib 
+socket 
+time

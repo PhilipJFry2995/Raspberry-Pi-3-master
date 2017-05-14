@@ -1,0 +1,8 @@
+/etc/dhcpd.conf - set static address, if needed
+
+
+
+nano /etc/wpa_supplicant/wpa_supplicant.conf
+
+ssid="IT-SEA_411"
+psk="Ce16761y7411"
